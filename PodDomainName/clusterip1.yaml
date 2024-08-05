@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cp1
+spec:
+  selector:
+    pod: pod1
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80

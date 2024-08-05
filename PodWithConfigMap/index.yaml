@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-configmap
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>A simple HTML document</title>
+    </head>
+    <body>
+        <p>This is Deployment One!<p>
+    </body>
+    </html>
+
+
+
+
+# k create cm my-config --from-file=index.yaml    
+
