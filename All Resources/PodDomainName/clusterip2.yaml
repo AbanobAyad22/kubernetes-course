@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cp2
+spec:
+  selector:
+    pod: pod2
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+# ---
+# curl cp2
+# curl cp2.default
+# curl cp2.default.svc.cluster.local
+# ping serviceip
+
+
+

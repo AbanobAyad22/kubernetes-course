@@ -1,0 +1,25 @@
+# 2. Allow Traffic from Specific Namespace
+# Definition: Allows ingress traffic to pods from any pod in a specific namespace.
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-from-namespace
+  namespace: default
+spec:
+  podSelector: {}
+  namespace: default
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              name: ns1
+
+# Namespace Label: 
+# Ensure the namespace you want to allow has the label  name: ns1
+
+
+# This indicates that only pods in name space default to be communicated from the namespace with the label name:
+# ns1 are allowed to send traffic to the pods that this NetworkPolicy applies to.

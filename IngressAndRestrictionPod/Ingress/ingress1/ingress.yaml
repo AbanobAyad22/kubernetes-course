@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: basic-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: basic.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sv
+                port:
+                  number: 80
+
+# Access:
+# minikube addons enable ingress
+#     Add an entry to your /etc/hosts file: 127.0.0.1 basic.example.com
+#     Visit http://basic.example.com in your browser.
+
+
+# nslookup basic.example.com
+# ping basic.example.com
+
+# kubectl port-forward service/sv 3030:80
+# curl basic.example.com:3030
+
+# minikube ssh 
+# curl basic.example.com

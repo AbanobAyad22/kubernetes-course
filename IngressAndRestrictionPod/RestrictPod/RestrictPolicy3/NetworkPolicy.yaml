@@ -1,0 +1,20 @@
+# 3. Allow Traffic from Specific Pod
+# Definition: Allows ingress traffic to pods from specific pods based on labels.
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-from-pod
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              role: trusted
+
+# Access:
+#     Pod Label: Ensure that the pods you want to allow traffic from have the label role=trusted.
+#     Test: Deploy a pod with the label role=trusted and try to access other pods protected by this policy.

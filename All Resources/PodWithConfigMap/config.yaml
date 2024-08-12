@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-con
+data:
+  default.conf: |
+    server {
+      listen       85;
+      listen  [::]:85;
+      server_name  localhost;
+      #access_log  /var/log/nginx/host.access.log  main;
+
+      location / {
+          root   /usr/share/nginx/html;
+          index  index.html index.htm;}}

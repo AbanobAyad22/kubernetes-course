@@ -1,0 +1,45 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: basic-auth-secret
+    nginx.ingress.kubernetes.io/auth-realm: "Protected Area"
+spec:
+  rules:
+    - host: auth.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sv
+                port:
+                  number: 80
+
+
+# Access:
+# Add an entry to your /etc/hosts file: 127.0.0.1 auth.example.com
+# Visit http://auth.example.com in your browser.
+
+
+
+
+
+
+# nslookup auth.example.com
+# ping auth.example.com
+
+# kubectl port-forward service/sv 3030:80
+# curl auth.example.com
+# curl -u abanoub:12345 auth.example.com
+
+
+# minikube ssh
+# curl auth.example.com
+# curl -u abanoub:12345 auth.example.com
+
+# cd /usr/share/nginx/html/
+# echo "pod1" > index.html  

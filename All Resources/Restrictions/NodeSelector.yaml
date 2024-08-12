@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  nodeSelector:
+    disktype: ssd
+# -----------------
+# kubectl label nodes minikube disktype=ssd
+# kubectl label nodes minikube disktype-

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod2
+  namespace: limit
+spec:
+  containers:
+  - name: pod2
+    image: nginx
+    ports:
+    - containerPort: 80
+    resources:
+      requests:
+        cpu: 1

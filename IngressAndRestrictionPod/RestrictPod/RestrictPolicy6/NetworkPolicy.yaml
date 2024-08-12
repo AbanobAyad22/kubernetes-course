@@ -1,0 +1,29 @@
+# 6. Allow Traffic with Multiple Criteria
+# Definition: Allows traffic based on multiple selectors and criteria.
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-multiple-criteria
+spec:
+  podSelector:
+    matchLabels:
+      app: my-app
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              environment: prod
+        - podSelector:
+            matchLabels:
+              role: frontend
+      ports:
+        - protocol: TCP
+          port: 80
+
+# Access:
+#     Namespace Label: Ensure that the namespace has the label environment=prod.
+#     Pod Label: Ensure that the source pods have the label role=frontend.
+#     Test: Access the my-app pods on port 8080 from the allowed namespaces and labeled pods.

@@ -1,0 +1,43 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mpi
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: multipath.example.com
+    http:
+      paths:
+      - path: /app1
+        pathType: Prefix
+        backend:
+          service:
+            name: sv1
+            port:
+              number: 80
+      - path: /app2
+        pathType: Prefix
+        backend:
+          service:
+            name: sv2
+            port:
+              number: 80
+
+# Access:
+#     Add an entry to your /etc/hosts file: 127.0.0.1 multipath.example.com
+#     Visit http://multipath.example.com/app1 and http://multipath.example.com/app2 in your browser.
+
+
+# nslookup multipath.example.com
+# ping -c 3 multipath.example.com
+
+
+
+# minikube ssh
+# curl -H "Host: multipath.example.com" http://multipath.example.com/app1
+# curl -H "Host: multipath.example.com" http://multipath.example.com/app2
+# curl http://multipath.example.com/app1
+# curl http://multipath.example.com/app2
+
+

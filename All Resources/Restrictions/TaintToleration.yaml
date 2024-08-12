@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  tolerations:
+  - key: "a"
+    operator: "Equal"
+    value: "ab"
+    effect: "NoSchedule"
+# -----------------
+# kubectl taint nodes minikube  a=ab:NoSchedule
+# kubectl taint nodes minikube key=value:NoSchedule-
+# --
+# kubectl taint nodes minikube key=value:NoExecute
+# kubectl taint nodes minikube key=value:NoExecute-

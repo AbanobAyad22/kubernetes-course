@@ -1,0 +1,27 @@
+# 5. Allow Ingress and Egress from Specific Ports
+# Definition: Allows traffic based on ports and protocols.
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-specific-ports
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - ports:
+        - protocol: TCP
+          port: 80
+    - ports:
+        - protocol: UDP
+          port: 53
+  egress:
+    - ports:
+        - protocol: TCP
+          port: 443
+
+# Access:
+# Test: Deploy a pod and attempt to connect to TCP port 80, UDP port 53, and TCP port 443. 
+# Traffic should be allowed based on these configurations.

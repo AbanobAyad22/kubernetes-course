@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: basic-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: basic.example.com
+      http:
+        paths:
+          - path: /pop
+            pathType: Prefix
+            backend:
+              service:
+                name: sv
+                port:
+                  number: 80
+
+# Access:
+#     Add an entry to your /etc/hosts file: 127.0.0.1 basic.example.com
+#     Visit http://basic.example.com in your browser.
+
+
+# nslookup basic.example.com
+# ping basic.example.com
+
+# minikube ssh 
+# curl basic.example.com/pop

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config2
+data:
+  index.html: |
+    Welcome from Deployment Two
+
+
+
+
+# k create -f index2.yaml
+

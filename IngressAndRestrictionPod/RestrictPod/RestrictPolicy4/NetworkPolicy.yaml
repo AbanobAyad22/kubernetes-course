@@ -1,0 +1,19 @@
+# 4. Allow Egress Traffic to Specific CIDR
+# Definition: Allows egress traffic from pods to a specific IP range.
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-egress-to-cidr
+spec:
+  podSelector: {}
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - ipBlock:
+            cidr: 10.0.0.0/24
+
+# Access:
+#     Test: Deploy a pod and attempt to access an external IP in the 10.0.0.0/24 range. 
+#     Traffic should be allowed, while other ranges will be blocked.

@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tls-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /  
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"  # Redirect HTTP to HTTPS
+spec:
+  tls:
+    - hosts:
+        - secure.example.com
+      secretName: tls-secret  # Name of the Kubernetes Secret containing the TLS certificate and key
+  rules:
+    - host: secure.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: my-service
+                port:
+                  number: 80
+
+# Access:
+# Ensure you have a TLS certificate and key in a Kubernetes Secret named tls-secret.
+# Add an entry to your /etc/hosts file: 127.0.0.1 secure.example.com
+# Visit https://secure.example.com in your browser.
