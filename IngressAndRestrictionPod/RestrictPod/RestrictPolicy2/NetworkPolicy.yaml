@@ -8,7 +8,6 @@ metadata:
   namespace: default
 spec:
   podSelector: {}
-  namespace: default
   policyTypes:
     - Ingress
   ingress:
