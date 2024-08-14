@@ -15,7 +15,7 @@ kind: Namespace
 metadata:
   name: ns1
   labels:
-    name: ns1    
+    age: 25    
 
 
 
