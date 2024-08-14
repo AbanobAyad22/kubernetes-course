@@ -14,7 +14,7 @@ spec:
     - from:
         - namespaceSelector:
             matchLabels:
-              name: ns1
+              age: 25
 
 # Namespace Label: 
 # Ensure the namespace you want to allow has the label  name: ns1
