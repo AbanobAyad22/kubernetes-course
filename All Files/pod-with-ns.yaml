@@ -1,7 +1,8 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: ng
+  name: pod4
+  namespace: depi
 spec:
   containers:
   - name: nginx-ns1

@@ -1,0 +1,29 @@
+# mysql-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:8.0
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "12345"       # <-- Set your root password here
+        ports:
+        - containerPort: 3306
+
+
+
+
+# kubectl run mysql-client  -it  -- bash        
+# mysql -u root -p  

@@ -3,16 +3,15 @@ kind: ReplicaSet
 metadata:
   name: frontend
 spec:
-  # modify replicas according to your case
   replicas: 3
   selector:
     matchLabels:
-      a: b
+      ahmed: dd
 # POd defination
   template:
     metadata:
       labels:
-        a: b
+        ahmed: dd
     spec:
       containers:
       - name: ninx
