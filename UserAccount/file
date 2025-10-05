@@ -14,7 +14,7 @@ openssl req -new -key /etc/kubernetes/pki/aly.key -out /etc/kubernetes/pki/aly.c
 # 1.3 Use CA Credentials and approve the CSR to generate the final Certificate
   !Important - Locate your CA Credentials - the CA Cert and CA Key. Depending on your installation procedure, it may be stored at different locations.
 -----------------------------------------------------------------------------------------------
-openssl x509 -req -in /etc/kubernetes/pki/aly.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out /etc/kubernetes/aly.crt -days 365
+openssl x509 -req -in /etc/kubernetes/pki/aly.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out /etc/kubernetes/pki/aly.crt -days 365
 -----------------------------------------------------------------------------------------------
 Awesome! your key and cert are ready to be used!
 
