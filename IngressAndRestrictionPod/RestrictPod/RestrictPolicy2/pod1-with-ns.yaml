@@ -1,4 +1,11 @@
 apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns1
+  labels:
+    name: abanoub
+---
+apiVersion: v1
 kind: Pod
 metadata:
   name: ng1
@@ -9,13 +16,6 @@ spec:
     image: nginx
     ports:
     - containerPort: 80
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: ns1
-  labels:
-    age: 25    
 
 
 
