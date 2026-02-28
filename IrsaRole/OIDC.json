@@ -1,3 +1,4 @@
+# don`t forget to create oidc --- create a token for service account
 {
     "Version": "2012-10-17",
     "Statement": [
