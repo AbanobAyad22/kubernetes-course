@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: s3-reader
+  namespace: default
+spec:
+  serviceAccountName: hello
+  containers:
+    - name: ubuntu
+      image: ubuntu
+      command: ["/bin/sh", "-c","sleep 50000"]
+      #args:
+        #- "aws s3 ls s3://abanoub2026 --region us-east-1"
