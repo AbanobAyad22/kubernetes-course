@@ -1,16 +1,9 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: ebs-sc
+  name: ebs-storage-class
 provisioner: ebs.csi.aws.com
-volumeBindingMode: WaitForFirstConsumer
 parameters:
-  csi.storage.k8s.io/fstype: xfs
-  type: io1
-  iopsPerGB: "50"
-  encrypted: "true"
-allowedTopologies:
-- matchLabelExpressions:
-  - key: topology.kubernetes.io/zone
-    values:
-    - us-east-2c
+  type: gp3  # General Purpose SSD (recommended for production)
+  fsType: ext4
+allowVolumeExpansion: true
