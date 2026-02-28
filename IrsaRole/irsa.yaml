@@ -4,4 +4,5 @@ metadata:
   name: hello
   namespace: default
   annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::800089106682:role/eks-s3
+    eks.amazonaws.com/role-arn: arn:aws:iam::account:role/eks-s3
+
