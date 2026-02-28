@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: hello
+  namespace: default
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::800089106682:role/eks-s3
