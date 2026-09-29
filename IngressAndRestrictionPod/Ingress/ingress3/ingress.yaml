@@ -26,3 +26,4 @@ spec:
 # Ensure you have a TLS certificate and key in a Kubernetes Secret named tls-secret.
 # Add an entry to your /etc/hosts file: 127.0.0.1 secure.example.com
 # Visit https://secure.example.com in your browser.
+# curl -i -k -H "Host: secure.example.com" https://ingressIp/
