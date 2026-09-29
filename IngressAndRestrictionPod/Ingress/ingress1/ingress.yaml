@@ -27,8 +27,14 @@ spec:
 # nslookup basic.example.com
 # ping basic.example.com
 
+#check service
+#------------
 # kubectl port-forward service/sv 3030:80
 # curl basic.example.com:3030
+
+#check app with ingress
+#-----------------------
+# curl -H "Host: basic.example.com"  http://172.20.148.17
 
 # minikube ssh 
 # curl basic.example.com
