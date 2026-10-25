@@ -1,15 +1,24 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: ebs-pod
 spec:
-  containers:
-  - name: my-app
-    image: nginx
-    volumeMounts:
-    - mountPath: "/data"
-      name: ebs-volume
-  volumes:
-  - name: ebs-volume
-    persistentVolumeClaim:
-      claimName: ebs-pvc
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: ebs-pod
+        image: nginx
+        volumeMounts:
+        - mountPath: "/data"
+          name: ebs-volume
+      volumes:
+      - name: ebs-volume
+        persistentVolumeClaim:
+          claimName: ebs-pvc
